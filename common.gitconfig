@@ -1,0 +1,30 @@
+[colour]
+	ui = true
+[core]
+	autocrlf = input
+#	excludesfile = ~/.gitignore_global
+#[commit]
+#	template = ~/.stCommitMsg
+[user]
+	name = Dan Kempster
+	email = me@dankempster.co.uk
+[github]
+	user = dankempster
+[alias]
+	lol = log --pretty=oneline --abbrev-commit --graph --decorate
+    recent = !git --no-pager log --pretty=oneline --abbrev-commit --graph --decorate -n 10
+    cog = log --graph --abbrev-commit --decorate  --first-parents
+    col = log --graph --abbrev-commit --decorate  --first-parent --pretty=oneline
+	st = status -sb
+	cp = cherry-pick
+    df = diff
+    cf = diff --cached
+	ad = add
+	ap = add --patch
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[rerere]
+	enabled = true
