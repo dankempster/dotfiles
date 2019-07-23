@@ -19,3 +19,27 @@ if [ $? -eq 0 ]; then
 	    . $(brew --prefix)/etc/bash_completion
 	fi
 fi
+
+# Find or list ports being listened to
+#
+# USAGE
+#
+# List all ports
+#   $ listening
+#
+# What's listening on port 8080?
+#   $ listening 8080
+#
+# What ports is DropBox using?
+#   $ listening dropbox
+#
+listening() {
+    if [ $# -eq 0 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P
+    elif [ $# -eq 1 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+    else
+        echo "Usage: listening [pattern]"
+    fi
+}
+
